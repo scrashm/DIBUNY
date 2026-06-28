@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESCAPE FROM DIBUNY</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <header id="title-bar">
+      <h1>ESCAPE FROM DIBUNY</h1>
+    </header>
+
+    <div id="scene-container">
+      <div id="background" class="bg-station fade-in" aria-hidden="true">
+        <img id="bg-image" class="bg-image hidden" alt="">
+      </div>
+
+      <div id="scene-overlay" class="fade-in">
+        <div id="dialogue-box" class="skip-zone" title="Клик или пробел — показать весь текст">
+          <div class="dialogue-layout">
+            <img id="portrait" class="portrait hidden" alt="" width="120" height="180">
+            <div class="dialogue-content">
+              <p id="speaker" class="speaker hidden"></p>
+              <p id="text" class="text"></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="choices" class="choices hidden"></div>
+      </div>
+    </div>
+
+    <div id="error" class="error hidden" role="alert"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
