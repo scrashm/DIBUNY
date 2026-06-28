@@ -13,11 +13,16 @@ python -m http.server 8080
 
 Откройте http://localhost:8080
 
-## Публикация на GitHub Pages
+## GitHub Pages (настройка)
 
-Репозиторий: `https://github.com/scrashm/DIBUNY`
+Репозиторий: https://github.com/scrashm/DIBUNY
 
-После `git push` включите **Settings → Pages → Build and deployment → GitHub Actions** (workflow уже в `.github/workflows/pages.yml`).
+1. **Settings** → **Pages**
+2. **Build and deployment** → **Source:** выберите **Deploy from a branch** (не GitHub Actions)
+3. **Branch:** `main` → папка **/ (root)** → **Save**
+4. Подождите 1–2 минуты и откройте https://scrashm.github.io/DIBUNY/
+
+Если раньше был включён GitHub Actions — переключите на **Deploy from a branch**, иначе сайт не поднимется.
 
 ## Структура
 
