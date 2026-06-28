@@ -1,14 +1,23 @@
 # ESCAPE FROM DIBUNY
 
-Браузерная визуальная новелла. Статический сайт: откройте `index.html` или играйте онлайн через GitHub Pages.
+Браузерная визуальная новелла.
+
+**Играть онлайн:** https://scrashm.github.io/DIBUNY/
 
 ## Локальный запуск
 
 ```bash
+cd C:\DIBUNY
 python -m http.server 8080
 ```
 
 Откройте http://localhost:8080
+
+## Публикация на GitHub Pages
+
+Репозиторий: `https://github.com/scrashm/DIBUNY`
+
+После `git push` включите **Settings → Pages → Build and deployment → GitHub Actions** (workflow уже в `.github/workflows/pages.yml`).
 
 ## Структура
 

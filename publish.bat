@@ -2,24 +2,26 @@
 setlocal
 cd /d "%~dp0"
 
-where gh >nul 2>&1
-if %errorlevel% equ 0 (
-  echo Creating GitHub repo and pushing...
-  gh repo create DIBUNY --public --source=. --remote=origin --push
-  gh api repos/{owner}/DIBUNY/pages -X POST -f build_type=workflow
-  gh api repos/{owner}/DIBUNY/pages -X PUT -f build_type=workflow
+set GH=%TEMP%\gh-cli\bin\gh.exe
+set USER=scrashm
+set REPO=DIBUNY
+
+if exist "%GH%" (
+  "%GH%" auth status >nul 2>&1
+  if errorlevel 1 (
+    echo Log in to GitHub first:
+    echo   "%GH%" auth login --web
+    exit /b 1
+  )
+  "%GH%" repo create %USER%/%REPO% --public --source=. --remote=origin --push 2>nul
+  if errorlevel 1 git push -u origin main
   echo.
-  echo Done. Open: https://github.com/YOUR_USER/DIBUNY/settings/pages
-  echo Game URL: https://YOUR_USER.github.io/DIBUNY/
+  echo Game: https://%USER%.github.io/%REPO%/
+  echo Enable Pages: https://github.com/%USER%/%REPO%/settings/pages
   goto :eof
 )
 
-echo GitHub CLI (gh) not found.
-echo.
-echo Manual steps:
-echo 1. Create repo: https://github.com/new  name: DIBUNY  public
-echo 2. Run:
-echo    git remote add origin https://github.com/YOUR_USER/DIBUNY.git
-echo    git push -u origin main
+echo 1. Create repo: https://github.com/new  name: %REPO%  public  no README
+echo 2. git push -u origin main
 echo 3. Settings - Pages - Source: GitHub Actions
-echo 4. Play: https://YOUR_USER.github.io/DIBUNY/
+echo 4. https://%USER%.github.io/%REPO%/
